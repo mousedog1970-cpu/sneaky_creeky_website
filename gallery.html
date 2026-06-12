@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Sneaky Creeky Events</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 4px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+      background: #111;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 32px;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+    }
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.5;
+      padding: 12px;
+      user-select: none;
+    }
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      opacity: 1;
+    }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html"><img src="images/logo.png" class="nav-logo" alt="Sneaky Creeky Events" /></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="events.html" class="nav-btn">Get tickets</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-title">The vibe</div>
+    <div class="page-heading">See you there</div>
+  </div>
+
+  <div class="gallery-grid" id="gallery">
+
+    <div class="gallery-item" onclick="openLightbox(0)">
+      <img src="images/gallery1.jpg" alt="River" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="images/gallery2.jpg" alt="Dance floor" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="images/gallery3.jpg" alt="Colorfields" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(3)">
+      <img src="images/gallery4.jpg" alt="Stage" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(4)">
+      <img src="images/gallery5.jpg" alt="Doc" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(5)">
+      <img src="images/gallery6.jpg" alt="Albert" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(6)">
+      <img src="images/gallery7.jpg" alt="Flag" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(7)">
+      <img src="images/gallery8.jpg" alt="Nick" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(8)">
+      <img src="images/gallery9.jpg" alt="The river" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(9)">
+      <img src="images/gallery10.jpg" alt="Campfire circle" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(10)">
+      <img src="images/gallery11.jpg" alt="The crowd" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(11)">
+      <img src="images/gallery12.jpg" alt="Tent" loading="lazy" />
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <span class="lightbox-prev" onclick="changePic(-1)">‹</span>
+    <img id="lightbox-img" src="" alt="" />
+    <span class="lightbox-next" onclick="changePic(1)">›</span>
+  </div>
+
+  <footer class="footer">
+    <span class="footer-text">© 2025 Sneaky Creeky Events</span>
+    <span class="footer-email">sneakycreekyevents@gmail.com</span>
+  </footer>
+
+  <script>
+    const images = [
+      'images/gallery1.jpg',
+      'images/gallery2.jpg',
+      'images/gallery3.jpg',
+      'images/gallery4.jpg',
+      'images/gallery5.jpg',
+      'images/gallery6.jpg',
+      'images/gallery7.jpg',
+      'images/gallery8.jpg',
+      'images/gallery9.jpg',
+      'images/gallery10.jpg',
+      'images/gallery11.jpg',
+      'images/gallery12.jpg',
+    ];
+
+    let current = 0;
+
+    function openLightbox(index) {
+      current = index;
+      document.getElementById('lightbox-img').src = images[current];
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function changePic(dir) {
+      current = (current + dir + images.length) % images.length;
+      document.getElementById('lightbox-img').src = images[current];
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') changePic(-1);
+      if (e.key === 'ArrowRight') changePic(1);
+    });
+  </script>
+
+</body>
+</html>
