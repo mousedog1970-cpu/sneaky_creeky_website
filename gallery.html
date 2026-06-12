@@ -30,7 +30,6 @@
     .gallery-item:hover img {
       transform: scale(1.05);
     }
-    /* Lightbox */
     .lightbox {
       display: none;
       position: fixed;
@@ -59,11 +58,8 @@
       line-height: 1;
       opacity: 0.7;
     }
-    .lightbox-close:hover {
-      opacity: 1;
-    }
-    .lightbox-prev,
-    .lightbox-next {
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-prev, .lightbox-next {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -74,23 +70,18 @@
       padding: 12px;
       user-select: none;
     }
-    .lightbox-prev:hover,
-    .lightbox-next:hover {
-      opacity: 1;
-    }
+    .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; }
     .lightbox-prev { left: 16px; }
     .lightbox-next { right: 16px; }
     @media (max-width: 768px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="index.html"><img src="images/logo.png" class="nav-logo" alt="Sneaky Creeky Events" /></a>
+    <a href="index.html"><img src="Sneaky Creeky Events.png" class="nav-logo" alt="Sneaky Creeky Events" /></a>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="events.html">Events</a>
@@ -106,47 +97,44 @@
   </div>
 
   <div class="gallery-grid" id="gallery">
-
     <div class="gallery-item" onclick="openLightbox(0)">
-      <img src="images/gallery1.jpg" alt="River" loading="lazy" />
+      <img src="River 2.jpeg" alt="River" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(1)">
-      <img src="images/gallery2.jpg" alt="Dance floor" loading="lazy" />
+      <img src="Colorfields.jpeg" alt="Colorfields" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(2)">
-      <img src="images/gallery3.jpg" alt="Colorfields" loading="lazy" />
+      <img src="Stage.jpeg" alt="Stage" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(3)">
-      <img src="images/gallery4.jpg" alt="Stage" loading="lazy" />
+      <img src="Albert.jpeg" alt="Albert" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(4)">
-      <img src="images/gallery5.jpg" alt="Doc" loading="lazy" />
+      <img src="Flag.jpeg" alt="Flag" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(5)">
-      <img src="images/gallery6.jpg" alt="Albert" loading="lazy" />
+      <img src="Nick.jpeg" alt="Nick" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(6)">
-      <img src="images/gallery7.jpg" alt="Flag" loading="lazy" />
+      <img src="The River.jpeg" alt="The River" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(7)">
-      <img src="images/gallery8.jpg" alt="Nick" loading="lazy" />
+      <img src="Campfire circle.jpeg" alt="Campfire circle" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(8)">
-      <img src="images/gallery9.jpg" alt="The river" loading="lazy" />
+      <img src="The crowd.jpeg" alt="The crowd" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(9)">
-      <img src="images/gallery10.jpg" alt="Campfire circle" loading="lazy" />
+      <img src="tent.jpeg" alt="Tent" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(10)">
-      <img src="images/gallery11.jpg" alt="The crowd" loading="lazy" />
+      <img src="Willim.jpeg" alt="Willim" loading="lazy" />
     </div>
     <div class="gallery-item" onclick="openLightbox(11)">
-      <img src="images/gallery12.jpg" alt="Tent" loading="lazy" />
+      <img src="Doc.jpeg" alt="Doc" loading="lazy" />
     </div>
-
   </div>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">×</span>
     <span class="lightbox-prev" onclick="changePic(-1)">‹</span>
@@ -155,24 +143,24 @@
   </div>
 
   <footer class="footer">
-    <span class="footer-text">© 2025 Sneaky Creeky Events</span>
+    <span class="footer-text">© 2026 Sneaky Creeky Events</span>
     <span class="footer-email">sneakycreekyevents@gmail.com</span>
   </footer>
 
   <script>
     const images = [
-      'images/gallery1.jpg',
-      'images/gallery2.jpg',
-      'images/gallery3.jpg',
-      'images/gallery4.jpg',
-      'images/gallery5.jpg',
-      'images/gallery6.jpg',
-      'images/gallery7.jpg',
-      'images/gallery8.jpg',
-      'images/gallery9.jpg',
-      'images/gallery10.jpg',
-      'images/gallery11.jpg',
-      'images/gallery12.jpg',
+      'River 2.jpeg',
+      'Colorfields.jpeg',
+      'Stage.jpeg',
+      'Albert.jpeg',
+      'Flag.jpeg',
+      'Nick.jpeg',
+      'The River.jpeg',
+      'Campfire circle.jpeg',
+      'The crowd.jpeg',
+      'tent.jpeg',
+      'Willim.jpeg',
+      'Doc.jpeg',
     ];
 
     let current = 0;
